@@ -2,25 +2,23 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 public class Diving 
-{//use doubles for array
+{
 	static int judge;
 	static int score;
 	static double Total=0, difficulty;
 	static double scoreTotal =0, calculateScore;
 	static double [] allJudges = new double [7];
-	//static double judge =0;
 	public static void main(String[] args)
 	{
 		difficulty=inputValidDegreeOfDifficulty();	
-		for (judge=0; judge<7;judge++)
+		for (judge=0; judge<7;judge++)//for loop for each judge
 		{
-			score=inputValidScore();
-			inputAllScores();
+			score=inputValidScore();//input valid score method give a score between 0 and ten to a diver
+			inputAllScores();//input all scores method places them in an array called allJudges 
 		}		
 		calculateScore=calculateScore();
-		System.out.println("Diver's Final Score is "+(calculateScore*.6));
+		System.out.println("Diver's Final Score is "+(calculateScore*.6));//total scores multiplied by .6
 	}
-
 	public static int inputValidScore()
 	{
 		score =(int)(Math.random() *10);
@@ -54,15 +52,16 @@ public class Diving
 				}	
 			}	
 		}
+		//nested for loop switches scores in order before printing out the lowest and highest score
 		System.out.println("the lowest value ="+allJudges[0]);
 		System.out.println("the highest value ="+allJudges[allJudges.length-1]);
 
-		for(int y=1;y<allJudges.length-1;y++)
+		for(int y=1;y<allJudges.length-1;y++)//all scores except for the lowest and highest scores
 		{
 			scoreTotal=scoreTotal+allJudges[y];
 		}
 		System.out.println("total of all 5 scores is "+scoreTotal);
-		scoreTotal=scoreTotal*difficulty;
+		scoreTotal=scoreTotal*difficulty;//total multiplied by difficulty
 		System.out.println(" total score*difficulty is "+scoreTotal);
 		
 		return (scoreTotal);
